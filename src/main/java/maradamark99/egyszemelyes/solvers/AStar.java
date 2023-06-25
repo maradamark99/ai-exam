@@ -1,33 +1,40 @@
 package maradamark99.egyszemelyes.solvers;
 
+import java.util.Comparator;
 import java.util.HashSet;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Set;
-import java.util.Stack;
 
+import lombok.Getter;
 import maradamark99.egyszemelyes.State;
+import maradamark99.egyszemelyes.maze.CellPosition;
 
-public class DepthFirstSearch extends Solver {
-    private final Stack<Node> openNodes;
-    private final Set<Node> closedNodes;
+@Getter
+public class AStar extends Solver {
+
+    Queue<AStarNode> openNodes;
+    Set<AStarNode> closedNodes;
+    private final CellPosition goal;
     private Node path;
 
-    public DepthFirstSearch(State state) {
+    public AStar(State state) {
         super(state);
-        openNodes = new Stack<>();
+        openNodes = new PriorityQueue<>();
+        goal = state.getMaze().getExitPosition();
+        openNodes.add(new AStarNode(state, goal));
         closedNodes = new HashSet<>();
     }
 
     @Override
     public void solve() {
-        var node = new Node(state);
-        openNodes.push(node);
-        while (!openNodes.isEmpty()) {
-            var currentNode = openNodes.pop();
+        while (openNodes.size() > 0) {
+            var currentNode = openNodes.remove();
             closedNodes.add(currentNode);
             for (var operator : getOperators()) {
                 if (operator.isExistingState(currentNode.getState())) {
                     var newState = operator.applyState(currentNode.getState());
-                    var newNode = new Node(newState, currentNode);
+                    var newNode = new AStarNode(newState, currentNode, goal);
                     if (newNode.isTargetNode()) {
                         path = newNode;
                         System.out.println(path);
@@ -41,8 +48,6 @@ public class DepthFirstSearch extends Solver {
                 }
             }
         }
-        System.out.println("Failed to solve the maze.");
-
     }
 
 }

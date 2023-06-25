@@ -1,8 +1,9 @@
-package maradamark99.egyszemelyes;
+package maradamark99.egyszemelyes.solvers;
 
 import java.util.Objects;
 
 import lombok.Getter;
+import maradamark99.egyszemelyes.State;
 
 @Getter
 public class Node {

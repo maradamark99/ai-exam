@@ -5,7 +5,7 @@ import java.io.IOException;
 import maradamark99.egyszemelyes.maze.CellPosition;
 import maradamark99.egyszemelyes.maze.Maze;
 import maradamark99.egyszemelyes.maze.MazeParser;
-import maradamark99.egyszemelyes.solvers.BreadthFirstSearch;
+import maradamark99.egyszemelyes.solvers.AStar;
 import maradamark99.egyszemelyes.solvers.Solver;
 
 public class Main {
@@ -15,7 +15,7 @@ public class Main {
         var maze = new Maze('S', 'E', '.', mazeArea, new CellPosition(0, 0),
                 new CellPosition(mazeArea.length - 1, mazeArea[0].length - 1));
         var initalState = new State(maze);
-        Solver solver = new BreadthFirstSearch(initalState);
+        Solver solver = new AStar(initalState);
         solver.solve();
     }
 }
