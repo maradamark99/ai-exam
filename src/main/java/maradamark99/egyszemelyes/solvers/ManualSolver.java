@@ -4,23 +4,23 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-import maradamark99.egyszemelyes.Direction;
+import maradamark99.egyszemelyes.FourDirection;
 import maradamark99.egyszemelyes.Operator;
 import maradamark99.egyszemelyes.State;
 import maradamark99.egyszemelyes.util.ConsoleUtil;
 
 public class ManualSolver extends Solver {
 
-    private final Map<String, Direction> directionsMap;
+    private final Map<String, FourDirection> directionsMap;
 
     public ManualSolver(State state) {
         super(state);
-        this.directionsMap = new LinkedHashMap<String, Direction>() {
+        this.directionsMap = new LinkedHashMap<String, FourDirection>() {
             {
-                put("w", Direction.UP);
-                put("a", Direction.LEFT);
-                put("s", Direction.DOWN);
-                put("d", Direction.RIGHT);
+                put("w", FourDirection.UP);
+                put("a", FourDirection.LEFT);
+                put("s", FourDirection.DOWN);
+                put("d", FourDirection.RIGHT);
             }
         };
     }

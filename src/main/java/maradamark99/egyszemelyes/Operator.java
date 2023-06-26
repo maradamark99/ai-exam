@@ -7,7 +7,7 @@ import maradamark99.egyszemelyes.maze.MazeCell;
 @AllArgsConstructor
 public class Operator {
 
-    private Direction direction;
+    private FourDirection direction;
 
     public boolean isExistingState(State state) {
         var stateCurrRow = state.getCurrentPosition().getRow();
