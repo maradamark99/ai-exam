@@ -2,7 +2,6 @@ package maradamark99.egyszemelyes.maze;
 
 import java.util.Arrays;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 @Getter

@@ -5,7 +5,7 @@ import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
-import maradamark99.egyszemelyes.Direction;
+import maradamark99.egyszemelyes.FourDirection;
 import maradamark99.egyszemelyes.Operator;
 import maradamark99.egyszemelyes.State;
 
@@ -18,7 +18,7 @@ public abstract class Solver {
     public Solver(State state) {
         this.state = state;
         this.operators = Arrays
-                .stream(Direction.values())
+                .stream(FourDirection.values())
                 .map(Operator::new)
                 .toList();
     }
